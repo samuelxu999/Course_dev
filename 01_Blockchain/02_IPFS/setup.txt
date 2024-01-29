@@ -1,0 +1,61 @@
+Preparation:
+	Linux Ubuntu OS: 20.04 or later
+	go: 1.18+
+	docker and docker-compose: latest version
+
+1) Pull ipfs-kubo docker image:
+    docker pull ipfs/kubo
+
+
+2. Create a folder as work directory, then create two node folder:
+ 	mkdir ipfs_test
+	mkdir ipfs_test /mkdir node1
+	mkdir ipfs_test /mkdir node1
+
+3. Generate swarm.key:
+	## Skip these steps if you have a pre-shared swarm.key.
+ 	
+ 	cd ipfs_test
+	git clone https://github.com/Kubuxu/go-ipfs-swarm-key-gen
+
+	##Next command will Overwrite existing swarm.key
+	go run go-ipfs-swarm-key-gen/ipfs-swarm-key-gen/main.go > swarm.key
+
+
+4) Run node1 and node2 by executing following scripts:
+	./startnode1.sh
+	./startnode2.sh
+	
+	You can check running nodes:
+	docker container ls
+
+5) Set Bootstrap Peer
+	Get nodes id:
+		docker exec ipfs_node1 ipfs id
+		docker exec ipfs_node1 ipfs id
+
+	Remove all default bootstrap nodes:
+ 		docker exec ipfs_node1 ipfs bootstrap rm all
+
+	Add bootstrap node (replace with node address):
+		docker exec ipfs_node1 ipfs bootstrap add @node2_address
+		docker exec ipfs_node2 ipfs bootstrap add @node1_address
+
+6) Put and get operations:
+	Add file:
+	 	 docker exec ipfs_node1 ipfs add /data/ipfs/testfile.txt
+
+
+	Get file:
+	 	docker exec ipfs_node2 ipfs cat QmRSMx8s19UctwvkAz9tX4ZySzUiTzsYEMxAQwUYxwMPC1
+		
+		
+		docker exec ipfs_node2 ipfs get QmRSMx8s19UctwvkAz9tX4ZySzUiTzsYEMxAQwUYxwMPC1 -o /data/ipfs/outfile.txt
+
+7) Stop nodes:
+	docker stop ipfs_node1
+	docker stop ipfs_node2 
+
+
+
+
