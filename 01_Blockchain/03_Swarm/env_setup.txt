@@ -21,6 +21,9 @@ B) Python Prerequisite
 C) Other tools:
 	jq used for handle json data
 		sudo apt-get install jq
+
+	expect used for remote executing commands on swarm nodes
+		sudo apt-get install expect
 	
 ------------------------------------------------------------------------------------------
                    					Go Installation
