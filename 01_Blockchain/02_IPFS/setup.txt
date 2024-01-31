@@ -43,14 +43,31 @@ Preparation:
 
 6) Put and get operations:
 	Add file:
-	 	 docker exec ipfs_node1 ipfs add /data/ipfs/testfile.txt
+		a) You can save some file under docker folder. for example ./node1/data. As docker can only access attached local folders.
+
+	 		docker exec ipfs_node1 ipfs add /data/ipfs/testfile.txt
+
+	 	b) You can use curl to input file at local folder rather docker folder. For example "test_file.txt" under current folder.
+	 		## don't forget add @ before file path
+	 		curl -F file=@test_file.txt -X POST "http://127.0.0.1:5001/api/v0/add"
 
 
 	Get file:
-	 	docker exec ipfs_node2 ipfs cat QmRSMx8s19UctwvkAz9tX4ZySzUiTzsYEMxAQwUYxwMPC1
+		a) You can read conent of file by using 'ipfs cat' given a CID
+
+	 		docker exec ipfs_node2 ipfs cat QmRSMx8s19UctwvkAz9tX4ZySzUiTzsYEMxAQwUYxwMPC1
 		
-		
-		docker exec ipfs_node2 ipfs get QmRSMx8s19UctwvkAz9tX4ZySzUiTzsYEMxAQwUYxwMPC1 -o /data/ipfs/outfile.txt
+		or you can download file by using 'ipfs get' then save it to docker data folder. 
+
+			docker exec ipfs_node2 ipfs get QmRSMx8s19UctwvkAz9tX4ZySzUiTzsYEMxAQwUYxwMPC1 -o /data/ipfs/outfile.txt
+
+		b) You can use curl to query file from ipfs
+
+			curl -X POST "http://127.0.0.1:5001/api/v0/cat?arg=QmZnHxXKuc7qNsANFF6k3onQQErmUussE6tCTm2dfmAVQT"
+
+		or save data to local file
+
+			curl -X POST "http://127.0.0.1:5001/api/v0/cat?arg=QmZnHxXKuc7qNsANFF6k3onQQErmUussE6tCTm2dfmAVQT" > myfile.txt 
 
 7) Stop nodes:
 	docker stop ipfs_node1
