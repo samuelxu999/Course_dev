@@ -9,8 +9,8 @@ Preparation:
 
 2. Create a folder as work directory, then create two node folder:
  	mkdir ipfs_test
-	mkdir ipfs_test /mkdir node1
-	mkdir ipfs_test /mkdir node1
+	mkdir ipfs_test/node1
+	mkdir ipfs_test/node1
 
 3. Generate swarm.key:
 	## Skip these steps if you have a pre-shared swarm.key.

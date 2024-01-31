@@ -1,9 +1,11 @@
 #!/bin/bash
 
 NODE_NAME="node2"
-IPFS_SWARM_KEY_FILE="/home/rxu22/Github/ipfs_test/swarm.key"
-IPFS_STAGING="/home/rxu22/Github/ipfs_test/$NODE_NAME/staging"
-IPFS_DATA="/home/rxu22/Github/ipfs_test/$NODE_NAME/data"
+
+IPFS_TEST="/home/rxu22/Github/Course_dev/01_Blockchain/02_IPFS/ipfs_test"
+IPFS_SWARM_KEY_FILE="$IPFS_TEST/swarm.key"
+IPFS_STAGING="$IPFS_TEST/$NODE_NAME/staging"
+IPFS_DATA="$IPFS_TEST/$NODE_NAME/data"
 
 container_name="ipfs_node2"
 p2p_port=4002
