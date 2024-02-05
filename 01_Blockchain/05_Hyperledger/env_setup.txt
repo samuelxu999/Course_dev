@@ -1,0 +1,62 @@
+This instruction will guide you prepare environment for hyperlegder project
+
+## Docker preparation:
+You need downgrade a older version of docker engine in case of compatiable errors
+
+First of all, list the avaiable docker-ce and docker-ce-cli versions in the repo
+	sudo apt-cache madison docker-ce
+	sudo apt-cache madison docker-ce-cli
+
+Then install an older version, like:
+	sudo apt-get install docker-ce=5:20.10.13~3-0~ubuntu-focal
+	sudo apt-get install docker-ce-cli=5:20.10.13~3-0~ubuntu-focal
+
+Finally, check version:
+	docker version
+
+You also need ensure depedencies are compatible. Update requrements by executing:
+	pip install -r requirements.txt
+
+
+1) Fabric Setup
+## reference: https://hyperledger-fabric.readthedocs.io/en/latest/install.html
+
+# prepare a working directory
+	mkdir -p $GOPATH/src/github.com/hyperledger
+	cd $GOPATH/src/github.com/hyperledger
+
+# To get the install script:
+	curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh && chmod +x install-fabric.sh
+
+# install components
+	./install-fabric.sh --fabric-version 2.5.0 docker samples binary
+
+
+2) Hyperledger Fabric EVM chaincode
+## Reference: https://github.com/hyperledger-archives/fabric-chaincode-evm
+Here are work directory organization
+go
+├─src
+│  ├─github.com
+│      │--hyperledger
+             │--fabric-samples                
+             │--fabric-chaincode-evm
+
+# get Fabric EVM chaincode git
+	git clone https://github.com/hyperledger/fabric-chaincode-evm.git $GOPATH/src/github.com/hyperledger/fabric-chaincode-evm
+
+# build fab3
+	make fab3
+
+# -------------- Mount the EVM Chaincode --------------
+## reference: https://github.com/hyperledger-archives/fabric-chaincode-evm/blob/main/examples/EVM_Smart_Contracts.md
+
+# set fist network of hlf 1.3.0
+cd $GOPATH/src/github.com/hyperledger/fabric-samples
+git checkout v1.3.0
+cd first-network
+
+#Update the docker-compose-cli.yaml with the volumes to include the fabric-chaincode-evm
+
+## The following instructions are based on the version 1.3 of first-network tutorial in the fabric-samples.
+Reference: https://hyperledger-fabric.readthedocs.io/en/release-1.3/build_network.html
