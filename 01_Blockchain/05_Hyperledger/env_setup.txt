@@ -1,6 +1,6 @@
 This instruction will guide you prepare environment for hyperlegder project
 
-## Docker preparation:
+## Docker preparation (option):
 You need downgrade a older version of docker engine in case of compatiable errors
 
 First of all, list the avaiable docker-ce and docker-ce-cli versions in the repo
@@ -14,6 +14,7 @@ Then install an older version, like:
 Finally, check version:
 	docker version
 
+## Update dependencies.
 You also need ensure depedencies are compatible. Update requrements by executing:
 	pip install -r requirements.txt
 
