@@ -1,0 +1,6 @@
+{
+"HttpProvider": "http://127.0.0.1:8042",
+"Box": "0x9a44717DF4BF8AF78188347130DdcCE87758AA65",
+"BoxPro": "0xB4d27B5735D9945760113c592423a8bfCECe44A5",
+"host_account":"0x9374e09e81d54c190cd94266eaad0f2a2b060af6"
+}
