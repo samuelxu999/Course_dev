@@ -59,5 +59,6 @@ Transfer coins between accounts:
 
 Query transaction and block:
 > eth.getTransaction(“@tx_receipt”)				(Get transaction data given a tx hash)
+
 > eth.getBlock(@blockNumber)					(Get a block data given a block number as index)
 
