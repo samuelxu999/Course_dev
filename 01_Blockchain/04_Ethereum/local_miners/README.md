@@ -57,3 +57,7 @@ After attach console, run following commands to get information:
 Transfer coins between accounts:
 > eth.sendTransaction({from:eth.coinbase, to:"0xa79fd8f95fe0cfaf4536ed6292b9388355d39842", value:web3.toWei(100,"ether")})
 
+Query transaction and block:
+> eth.getTransaction(“@tx_receipt”)				(Get transaction data given a tx hash)
+> eth.getBlock(@blockNumber)					(Get a block data given a block number as index)
+
