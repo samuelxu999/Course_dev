@@ -1,26 +1,24 @@
 
 '''
 ========================
-NFT_CapAC module
+Box_demo module
 ========================
-Created on August.21, 2022
-@author: Xu Ronghua
-@Email:  rxu22@binghamton.edu
-@TaskDescription: This module provide encapsulation of web3.py API to interact with NFT_CapAC smart contract.
+@TaskDescription: This module provide encapsulation of web3.py API to interact with Box smart contract.
 '''
 from web3 import Web3, HTTPProvider, IPCProvider
 import json, datetime, time
 import sys
 import argparse
 
+## This class define initialization and provide wrapper of Box functions.
 class Box(object):
 	def __init__(self, http_provider, contract_addr, contract_config):
-		# configuration initialization
+		## configuration initialization
 		self.web3 = Web3(HTTPProvider(http_provider))
 		self.contract_address = Web3.toChecksumAddress(contract_addr)
 		self.contract_config = json.load(open(contract_config))
 
-		# new contract object
+		## new contract object
 		self.contract = self.web3.eth.contract(address=self.contract_address, 
 		                                    abi=self.contract_config['abi'])
 

@@ -1,15 +1,18 @@
-# Sample Hardhat Project for learning process
+# Sample Smart Contract Project for learning process
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project demonstrates a simple smart contract case:
+1) Show how to use Hardhat test network to test smart contract without running ehtereum
 
-reference:https://docs.openzeppelin.com/learn/
+2) Show how to use truffle to compile and deploy chain code on a local ethereum network, then develop python wrapper to interact with smart contract.
+
 
 ## Organization of project
 |   name   | Description |
 |:----------:|-------------|
-| contracts | src folder containing all smart contract source files (*.sol). |
+| contracts | contain all smart contract source files (*.sol). |ß
 | scripts | scrpts directory containing deploy.js and other demo cases, e.g,. index.js. |
 | test | unit test folder containeing all test cases file (*.js). |
+| src | contrain config, requirements, and python demo code. |
 | hardhat.config.js | configuration file for hardhat environment. |
 | package.json | save all dependencies and packages for node.js. |
 | truffle-config.js | configuration file for truffle environment. |
@@ -62,3 +65,29 @@ c) execute scripts to run demo cases of smart contract on local hardhat network.
 ```shell
 npx hardhat run --network localhost ./scripts/index.js	// execute scripts
 ```
+
+## You can also setup local miners as test network.
+
+You need check these points:
+
+-- ensure local miners are running
+
+-- enable networks->development in truffle-config.js 
+
+-- correct deploy functions in 2_deploy_contracts.js
+
+1) compile contracts and migrate to local network.
+```shell
+// compile contracts
+truffle compile	
+
+// deploy contracts on local network (enable networks->development in truffle-config.js)
+truffle migrate --reset
+````
+
+2) To test on local network, you can try following commands.
+```shell
+cd src
+// execute demo test cases (py)
+python3 Box_demo.py
+````
