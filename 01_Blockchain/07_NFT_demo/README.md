@@ -28,9 +28,9 @@ screen -r hardhat_node  // attach hardhat_node screen session
 3) Run test on hardhat, you can try following commands. 
 ```shell
 npx hardhat compile		// compile all contracts
-npx hardhat run --network localhost scripts/deploy.js	// deploy contracts on local hardhat network
-npx hardhat run --network localhost ./scripts/*.js	// execute *demo.js scripts
 npx hardhat test		// execute unit test cases
+npx hardhat run --network localhost scripts/deploy.js	// deploy contracts on local hardhat network
+npx hardhat run --network localhost ./scripts/NFT_CapAC.demo.js	// execute NFT_CapAC.demo.js scripts
 ````
 
 ## You can also setup local miners as test network.
