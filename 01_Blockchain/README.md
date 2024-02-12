@@ -12,3 +12,12 @@ This folder contains Swarm configuation and tools for demo.
 
 ## 04_Ethereum
 This folder is used for ethereum envrioment configutation and tools for demo.
+
+## 05_Hyperledger
+This folder is used for hyperledger envrioment configutation and tools for demo.
+
+## 06_SmartContract
+This folder is used for smart contract envrioment configutation and showcases.
+
+## 07_NFT_demo
+This folder is used for NFT contract development setup and showcases.
