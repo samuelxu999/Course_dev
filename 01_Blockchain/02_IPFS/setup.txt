@@ -32,7 +32,7 @@ Preparation:
 5) Set Bootstrap Peer
 	Get nodes id:
 		docker exec ipfs_node1 ipfs id
-		docker exec ipfs_node1 ipfs id
+		docker exec ipfs_node2 ipfs id
 
 	Remove all default bootstrap nodes:
  		docker exec ipfs_node1 ipfs bootstrap rm all
