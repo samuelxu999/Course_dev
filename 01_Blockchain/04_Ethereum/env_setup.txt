@@ -68,7 +68,7 @@ Method: Build from source code
 		git checkout v1.10.19
 
 	D) build geth. This will take several minutes to be done.
-		make geth
+		make all
 
 	E) Add go-ethereum executable bin path in ~/.bashrc
 		1) open ~/.bashrc file
