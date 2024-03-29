@@ -52,7 +52,7 @@ class RPC_Curl(object):
 		get_body = data_buffer.getvalue()
 
 		# Decode the bytes stored in get_body and return the result
-		response['results'] = get_body.decode('utf8')
+		response['results'] = get_body
 		return response
 
 	'''
@@ -100,18 +100,27 @@ def test():
 
 	rpc_curl = RPC_Curl(10206)
 
-	file_name = 'test_file.txt'
+	# file_name = 'test_file.txt'
+	file_name = 'Gossip_protocol.jpg'
 
 	post_ret = rpc_curl.save_file(file_name)
-	print(post_ret)
+	# print(post_ret)
 	print(json.loads(post_ret['results']))
 
 	# # use string hash
-	ref_hash = json.loads(post_ret['results'])['Hash']
-	# ref_hash = post_ret['results']
+	receipt = json.loads(post_ret['results'])
+	ref_hash = receipt['Hash']
+	download_file = "dl_"+receipt['Name']
+	# print(download_file)
 
-	query_ret = rpc_curl.retrive_file(ref_hash)
-	print(query_ret)
+	## retrive file content from ipfs
+	file_content = rpc_curl.retrive_file(ref_hash)['results']
+	# print(file_content)
+
+	## save content to a download_file with prefix 'dl'
+	text_file = open(download_file, "wb")
+	text_file.write(file_content)
+	text_file.close()
 
 
 if __name__ == "__main__":
