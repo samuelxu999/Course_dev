@@ -37,7 +37,7 @@ To check current solidity version:
 truffle version
 ```
 
-## Using Hardhat to compile, deploy and test smart contracts
+## A) Using Hardhat to compile, deploy and test smart contracts
 ### 1) compile and run unit test:
 ```shell
 npx hardhat compile		// compile all contracts
@@ -66,7 +66,40 @@ c) execute scripts to run demo cases of smart contract on local hardhat network.
 npx hardhat run --network localhost ./scripts/index.js	// execute scripts
 ```
 
-## You can also setup local miners as test network.
+## B) You can launch ganache-cli as simulation network and test smart contracts.
+
+You need check these points:
+
+-- Execute ganache-cli
+```shell
+// 5777 is network id
+// You can set large gasLimit like 10M to avoild gaslimitation error during smart contract test
+ganache-cli -i 5777 --gasLimit 10000000
+````
+
+-- enable networks->development in truffle-config.js. You should set network_id: "5777" in this case
+
+-- correct deploy functions in 2_deploy_contracts.js
+
+1) compile contracts and migrate to local network.
+```shell
+// compile contracts
+truffle compile	
+
+// deploy contracts on local network (enable networks->development in truffle-config.js)
+truffle migrate --reset
+````
+
+2) Before test smart contract, you need upldate deployed contract address in "/src/addr_list.json"
+
+To test on smart contract demo, you can try following commands.
+```shell
+cd src
+// execute demo test cases (py)
+python3 Box_demo.py
+````
+
+## C) You can also setup local miners as test network.
 
 You need check these points:
 
@@ -85,7 +118,9 @@ truffle compile
 truffle migrate --reset
 ````
 
-2) To test on local network, you can try following commands.
+2) Before test smart contract, you need upldate deployed contract address in "/src/addr_list.json"
+
+To test on local network, you can try following commands.
 ```shell
 cd src
 // execute demo test cases (py)
