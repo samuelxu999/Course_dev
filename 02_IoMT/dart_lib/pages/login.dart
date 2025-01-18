@@ -49,11 +49,10 @@ class _LoginPageState extends State<LoginPage> {
               ), 
             ), 
           
-          // Sign in button
-          SizedBox( 
-            height: 65, 
-            width: 360, 
-            child: Container( 
+            // Sign in button
+            SizedBox( 
+              height: 65, 
+              width: 360, 
                 child: Padding( 
                   padding: const EdgeInsets.only(top: 20.0), 
                   child: ElevatedButton( 
@@ -66,37 +65,33 @@ class _LoginPageState extends State<LoginPage> {
                       // Navigate to home page when tapped.
                       Navigator.push(context,MaterialPageRoute(builder: (context) => NavigatePage()));
                     }, 
-  
+
                   ), 
                 ), 
-              ), 
-          ),
+            ),
 
-          //forget password
-          SizedBox( 
-              height: 50, 
-            ), 
-            Container( 
-                child: Center( 
-                  child: Row( 
-                    children: [ 
-  
-                      Padding( 
-                        padding: const EdgeInsets.only(left: 62), 
-                        child: Text('Forgot your login details? '), 
-                      ), 
-  
-                      Padding( 
-                        padding: const EdgeInsets.only(left:1.0), 
-                        child: InkWell( 
-                          onTap: (){ 
-                            print('hello'); 
-                          }, 
-                            child: Text('Get help logging in.', style: TextStyle(fontSize: 14, color: Colors.blue),)), 
-                      ) 
-                    ], 
-                  ), 
-                ) 
+            //forget password
+            SizedBox( 
+              child: Center( 
+                child: Row( 
+                  children: [ 
+
+                    Padding( 
+                      padding: const EdgeInsets.only(left: 62), 
+                      child: Text('Forgot your login details? '), 
+                    ), 
+
+                    Padding( 
+                      padding: const EdgeInsets.only(left:1.0), 
+                      child: InkWell( 
+                        onTap: (){ 
+                          print('hello'); 
+                        }, 
+                          child: Text('Get help logging in.', style: TextStyle(fontSize: 14, color: Colors.blue),)), 
+                    ) 
+                  ], 
+                ), 
+              ) 
             ) 
 
           ],

@@ -28,27 +28,33 @@ class _HomePageState extends State<HomePage> {
             Padding( 
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0), 
               padding: EdgeInsets.symmetric(horizontal: 15), 
-            ),   
+            ), 
+            // Input user name
+            Padding( 
+              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0), 
+              padding: EdgeInsets.symmetric(horizontal: 15), 
+              child: Text( 
+                'Welcome to home page'
+              ), 
+            ),
             Padding( 
               padding: const EdgeInsets.only( 
-                  left: 15.0, right: 15.0, top: 15, bottom: 0), 
+                left: 15.0, right: 15.0, top: 15, bottom: 0), 
                 child: SizedBox( 
                   height: 65, 
                   width: 360, 
-
-                      child: Padding( 
-                        padding: const EdgeInsets.only(top: 20.0), 
-                        child: ElevatedButton( 
-                          child: Text( 'Log out ', style: TextStyle(color: const Color.fromARGB(255, 3, 59, 105), fontSize: 20), 
-                          ), 
-                          // handle function here
-                          onPressed: (){ 
-                            // Navigate to login page when tapped.
-                            Navigator.pop(context);
-                          }, 
-        
+                    child: Padding( 
+                      padding: const EdgeInsets.only(top: 20.0), 
+                      child: ElevatedButton( 
+                        child: Text( 'Log out', style: TextStyle(color: const Color.fromARGB(255, 3, 59, 105), fontSize: 20), 
                         ), 
+                        // handle function here
+                        onPressed: (){ 
+                          // Navigate to login page when tapped.
+                          Navigator.pop(context);
+                        },       
                       ), 
+                    ), 
 
               ),
             ),        
