@@ -15,29 +15,6 @@ class _NavigatePageState extends State<NavigatePage> {
   // used to show selected icon
   int _selectedIndex = 0;
 
-  // static const TextStyle optionStyle =
-  //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  
-  // // use list to show message given selected index
-  // static const List<Widget> _widgetOptions = <Widget>[
-  //   Text(
-  //     'Home Page',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Data Page',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Stress Page',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Reference Page',
-  //     style: optionStyle,
-  //   ),
-  // ];
-
   // update index as pressing icon
   void _onItemTapped(int index) {
     setState(() {
@@ -79,7 +56,6 @@ class _NavigatePageState extends State<NavigatePage> {
         onTap: _onItemTapped,
       ),
       body: _screen.elementAt(_selectedIndex),
-    );
-    
+    ); 
   }
 }
