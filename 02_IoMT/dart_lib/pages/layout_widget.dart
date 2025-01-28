@@ -12,20 +12,66 @@ class DemoLayoutWidgets extends StatefulWidget {
 
 // This function update page given state change
 class _DemoLayoutUpdateState extends State<DemoLayoutWidgets> {
+  // used to show selected icon
+  int _selectedIndex = 0;
+
+  // update index as pressing icon
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final  List<Widget> _screen = <Widget>[
+      _buildContainer(),
+      _buildImageRow(),
+      _buildImageColumn(),
+      _buildGrid(),
+      _buildList(),
+    ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Layout Demo'),
       ),
-      body: Center(
-        // replace this section in your app to test different layout
-        child: _buildContainer(),
-        // child: _buildImageRow(),
-        // child: _buildImageColumn(),
-        // child: _buildGrid(),
-        // child: _buildList(),
-      )
+      // body: Center(
+      //   // replace this section in your app to test different layout
+      //   child: _buildContainer(),
+      //   // child: _buildImageRow(),
+      //   // child: _buildImageColumn(),
+      //   // child: _buildGrid(),
+      //   // child: _buildList(),
+      // )
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            label: "Container",
+            icon: Icon(Icons.home, color: Colors.green),
+          ),
+          BottomNavigationBarItem(
+            label: "ImageRow",
+            icon: Icon(Icons.cloud_circle, color: Colors.green),
+          ),
+          BottomNavigationBarItem(
+            label: "ImageColumn",
+            icon: Icon(Icons.access_alarm, color: Colors.green),
+          ),
+          BottomNavigationBarItem(
+            label: "Grid",
+            icon: Icon(Icons.rate_review, color: Colors.green),
+          ),
+          BottomNavigationBarItem(
+            label: "List",
+            icon: Icon(Icons.balance, color: Colors.green),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+      ),
+      body: _screen.elementAt(_selectedIndex),
 
     );
   }

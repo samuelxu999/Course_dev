@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:demo_code/pages/Stress.dart';
+import 'package:demo_code/pages/new_screen.dart';
 
 // This is home page after login
 class HomePage extends StatefulWidget {
@@ -37,6 +37,27 @@ class _HomePageState extends State<HomePage> {
                 'Welcome to home page'
               ), 
             ),
+            Padding( 
+              padding: const EdgeInsets.only( 
+                left: 15.0, right: 15.0, top: 15, bottom: 0), 
+                child: SizedBox( 
+                  height: 65, 
+                  width: 360, 
+                    child: Padding( 
+                      padding: const EdgeInsets.only(top: 20.0), 
+                      child: ElevatedButton( 
+                        child: Text( 'Open a new screen', style: TextStyle(color: const Color.fromARGB(255, 3, 59, 105), fontSize: 20), 
+                        ), 
+                        // handle function here
+                        onPressed: (){ 
+                          // Navigate to new screen when tapped.
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => NewPage()));
+                        },       
+                      ), 
+                    ), 
+
+              ),
+            ),  
             Padding( 
               padding: const EdgeInsets.only( 
                 left: 15.0, right: 15.0, top: 15, bottom: 0), 

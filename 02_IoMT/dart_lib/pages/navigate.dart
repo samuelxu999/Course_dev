@@ -32,6 +32,7 @@ class _NavigatePageState extends State<NavigatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // This nagivationbar can open different screens. 
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
