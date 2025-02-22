@@ -1,6 +1,7 @@
 import json
 import requests
 import sys
+from datetime import datetime
 import boto3
 
 def lambda_handler(event, context):
@@ -28,7 +29,12 @@ def lambda_handler(event, context):
         # create dynamodb object instance
         mydb = boto3.resource('dynamodb') 
         # new a table object given a table name 
-        mytable = mydb.Table('fitbitToken') 
+        mytable = mydb.Table('fitbitToken')
+
+        # Get current date and time
+        now = datetime.now()
+        # Format the output of timesamp
+        formatted_date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         # build data items from response
         item = {
@@ -36,10 +42,11 @@ def lambda_handler(event, context):
             'refresh_token': ret_auth['refresh_token'],
             'user_id': ret_auth['user_id'],
             'expires_in': ret_auth['expires_in'],
-            'token_type': ret_auth['token_type']
+            'token_type': ret_auth['token_type'],
+            'time_stamp': formatted_date_time
         }
 
-        # save access token information to database
+        # save access token information to database, put new authrization data to Table-fitbitToken 
         mytable.put_item(Item=item)
 
         # return client with correct code.
