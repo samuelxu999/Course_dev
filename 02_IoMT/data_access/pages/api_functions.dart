@@ -41,7 +41,6 @@ Future<String> getSteps(String startdate, String enddate) async {
       'Content-Type': 'application/json; charset=UTF-8'
     },
     body: jsonEncode(<String,String>{
-      "access_token": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1BYSjYiLCJzdWIiOiJCTjRXTUwiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcnBybyBybnV0IHJzbGUgcmNmIHJhY3QgcnJlcyBybG9jIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3Mzk0MzIzMjUsImlhdCI6MTczOTQwMzUyNX0.m19kFGCttJsU0hpfL940Drfu6XA6tnHchrXxsavbmss",
       "startdate": startdate,
       "enddate": enddate
     })
