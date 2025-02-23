@@ -72,14 +72,14 @@ async def refresh_token_handler(event, context):
         url="https://api.fitbit.com/oauth2/token"
 
         headers={
-            "Authorization": "Basic MjNQWEo2OjllMTc3NTk3ZTA0NzdhMzBlMGRhNzdmZjIxMGEzM2E0",
+            "Authorization": "Basic [base64 client_id:client_secret]]",
             "Content-Type": "application/x-www-form-urlencoded"
         }
 
         data={
             "grant_type":"refresh_token",
             "refresh_token":refresh_token,
-            "client_id":"23PXJ6"
+            "client_id":"[Client ID]"
         }
 
         ## send refresh token request.
