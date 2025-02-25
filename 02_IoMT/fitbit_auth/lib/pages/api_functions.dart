@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 // Call fitbit auth2.0 request to generate access token
 Future<String> fitbitAuth(String authCode) async {
-  final url=Uri.parse('https://9xgokmzozd.execute-api.us-east-2.amazonaws.com/test/fitbitAuth');
+  final url=Uri.parse('[replace with your aws API gateway endpoint]');
   final response = await http.post(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8'
@@ -21,7 +21,7 @@ Future<String> fitbitAuth(String authCode) async {
 
 // Call fitbit refresh access token
 Future<String> fitbitRefreshToken() async {
-  final url=Uri.parse('https://9xgokmzozd.execute-api.us-east-2.amazonaws.com/test/fitbitRefresh');
+  final url=Uri.parse('[replace with your aws API gateway endpoint]');
   final response = await http.get(url,
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8'

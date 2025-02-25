@@ -28,7 +28,7 @@ async def save_token(ret_data):
 
     # Get current date and time
     now = datetime.now()
-    # Format the output of timesamp
+    # Format the output of timestamp
     formatted_date_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
     # build data items from response
