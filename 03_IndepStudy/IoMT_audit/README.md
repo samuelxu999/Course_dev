@@ -8,6 +8,12 @@ Demonstrates a simple case:
 
 3. How to use truffle to compile and deploy NFT contracts on a ganache test network, then develop phtyon wrapper to interact with functions of NFT tokens. 
 
+## Install required tools: ganache-cli and truffle
+```shell
+sudo npm install -g ganache-cli
+sudo npm install -g truffle
+``` 
+
 
 ## Use Hardhat to run test suites.
 
