@@ -80,6 +80,24 @@ class NFT_CapAC(object):
 		else:
 			return None
 
+	## setCapAC_patientid
+	def CapAC_patientid(self, tokenId, patient_id):
+		token_existed = self.contract.functions.exists(int(tokenId)).call({'from': self.web3.eth.coinbase})
+		if(token_existed):
+			tx_hash = self.contract.functions.setCapAC_patientid(int(tokenId), patient_id).transact({'from': self.web3.eth.coinbase})
+			return self.web3.eth.wait_for_transaction_receipt(tx_hash)
+		else:
+			return None
+
+	## setCapAC_datareference
+	def CapAC_datareference(self, tokenId, data_reference):
+		token_existed = self.contract.functions.exists(int(tokenId)).call({'from': self.web3.eth.coinbase})
+		if(token_existed):
+			tx_hash = self.contract.functions.setCapAC_datareference(int(tokenId), data_reference).transact({'from': self.web3.eth.coinbase})
+			return self.web3.eth.wait_for_transaction_receipt(tx_hash)
+		else:
+			return None
+
 	##get owner of a token id
 	def ownerToken(self, tokenId):
 		token_existed = self.contract.functions.exists(int(tokenId)).call({'from': self.web3.eth.coinbase})
@@ -110,7 +128,9 @@ def define_and_get_arguments(args=sys.argv[1:]):
                         2-mint_CapAC, \
                         3-burn_CapAC, \
                         4-CapAC_expireddate, \
-                        5-CapAC_authorization")
+                        5-CapAC_authorization, \
+                        6-CapAC_patientid, \
+                        7-CapAC_datareference")
 
     parser.add_argument("--op_status", type=int, default="0", 
                         help="input sub operation")
@@ -192,6 +212,22 @@ if __name__ == "__main__":
 		receipt = myToken.CapAC_authorization(tokenId, args.value)
 		if(receipt!=None):
 			print('Token {} setCapAC_authorization'.format(tokenId))
+			print(receipt)
+		else:
+			print('Token {} is not existed'.format(tokenId))
+	elif(args.test_op==6):
+		tokenId=NFT_CapAC.getAddress(args.id)
+		receipt = myToken.CapAC_patientid(tokenId, args.value)
+		if(receipt!=None):
+			print('Token {} setCapAC_patientid'.format(tokenId))
+			print(receipt)
+		else:
+			print('Token {} is not existed'.format(tokenId))	
+	elif(args.test_op==7):
+		tokenId=NFT_CapAC.getAddress(args.id)
+		receipt = myToken.CapAC_datareference(tokenId, args.value)
+		if(receipt!=None):
+			print('Token {} setCapAC_datareference'.format(tokenId))
 			print(receipt)
 		else:
 			print('Token {} is not existed'.format(tokenId))		

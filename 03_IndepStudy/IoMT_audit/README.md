@@ -10,8 +10,8 @@ Demonstrates a simple case:
 
 ## Install required tools: ganache-cli and truffle
 ```shell
-sudo npm install -g ganache-cli
-sudo npm install -g truffle
+npm install -g ganache-cli
+npm install -g truffle
 ``` 
 
 
@@ -39,7 +39,7 @@ npx hardhat run --network localhost scripts/deploy.js			// deploy contracts on l
 npx hardhat run --network localhost ./scripts/NFT_CapAC.demo.js	// execute NFT_CapAC.demo.js scripts
 ````
 
-## You can also setup ganachr as test network.
+## You can also setup ganache as test network.
 
 1) Opne a new terminal, then run ganache-cli:
 ```shell
@@ -78,5 +78,7 @@ python3 NFT_CapAC.py --test_op 2 --id token1 --op_status 0	// mint token1 by own
 python3 NFT_CapAC.py --test_op 2 --id token2 --op_status 1	// mint token2 by other
 python3 NFT_CapAC.py --test_op 3 --id token1	// burn token1
 python3 NFT_CapAC.py --test_op 4 --id token1	// update AC expired date of token1
-python3 NFT_CapAC.py --test_op 5 --id token1 --value "Assign access right!" // assign rights to token1
+python3 NFT_CapAC.py --test_op 5 --id token1 --value "Assign access right!" // assign access rights to token1
+python3 NFT_CapAC.py --test_op 6 --id token1 --value "0x5aa101f0ec62a04329d2db2e8763c55cc10ba3d7a6a08f4557aa15159ce3a7c9" // add patient id to token1
+python3 NFT_CapAC.py --test_op 7 --id token1 --value "QmSK2tz19L38cQFZkAbSwtJ8cRXKjE8CPy73tPpFLz9DGc" // add data reference to token1
 ````

@@ -19,6 +19,8 @@ contract NFT_CapAC is ERC721, ERC721Enumerable, Ownable {
         uint256 issuedate;      // token issued date
         uint256 expireddate;    // token expired date
         string authorization;   // authronized access rights
+        string patientid;       // patient id associated with biometric, like fingerprint.
+        string datareference;   // reference of a data_set: root hash of merkle(data_set)
     }
 
     // Mapping from token ID to CapAC
@@ -76,15 +78,20 @@ contract NFT_CapAC is ERC721, ERC721Enumerable, Ownable {
         _burnCapAC(tokenId);
     }
 
-    function query_CapAC(uint256 tokenId) public view returns (uint, 
+    function query_CapAC(uint256 tokenId) public view returns (
+                                                        uint, 
                                                         uint256, 
                                                         uint256, 
+                                                        string memory,
+                                                        string memory,
                                                         string memory) {
         // return(id, issuedate, expireddate, authorization);  
         return(_capAC[tokenId].id, 
             _capAC[tokenId].issuedate,
             _capAC[tokenId].expireddate,
-            _capAC[tokenId].authorization
+            _capAC[tokenId].authorization,
+            _capAC[tokenId].patientid,
+            _capAC[tokenId].datareference
             );      
     }
 
@@ -93,6 +100,8 @@ contract NFT_CapAC is ERC721, ERC721Enumerable, Ownable {
         _capAC[tokenId].issuedate = 0;
         _capAC[tokenId].expireddate = 0;
         _capAC[tokenId].authorization = 'NULL';
+        _capAC[tokenId].patientid = 'NULL';
+        _capAC[tokenId].datareference = 'NULL';
     }
 
     function _burnCapAC(uint256 tokenId) private {
@@ -123,5 +132,27 @@ contract NFT_CapAC is ERC721, ERC721Enumerable, Ownable {
 
         emit OnCapAC_Update(tokenId, _capAC[tokenId].id);
    
+    }
+
+    // Add patient id to a CapAC
+    function setCapAC_patientid(uint256 tokenId, 
+                                        string memory patientid) public {
+        require(ownerOf(tokenId) == msg.sender, "NFT_CapAC: setCapAC_patientid from incorrect owner");
+
+        _capAC[tokenId].id += 1;
+        _capAC[tokenId].patientid = patientid;
+
+        emit OnCapAC_Update(tokenId, _capAC[tokenId].id);
+    }
+
+    // Add data reference to a CapAC
+    function setCapAC_datareference(uint256 tokenId, 
+                                        string memory datareference) public {
+        require(ownerOf(tokenId) == msg.sender, "NFT_CapAC: setCapAC_datareference from incorrect owner");
+
+        _capAC[tokenId].id += 1;
+        _capAC[tokenId].datareference = datareference;
+
+        emit OnCapAC_Update(tokenId, _capAC[tokenId].id);
     }
 }
