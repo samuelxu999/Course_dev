@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'api_functions.dart';
 
-// This is a demo page to show how to use http call API gateway to save Fitbit data.
+// This is a demo page to show how to use http call API gateway to save Fitbit data and display results on UI.
 class SaveData extends StatefulWidget {
   const SaveData({super.key});
 
@@ -11,7 +11,10 @@ class SaveData extends StatefulWidget {
 
 // This function update page given state change
 class _SaveDataPageState extends State<SaveData> {
-  Future<String>? futureHeartRate;
+  // define a Future object to handle results from a asyn function
+  Future<String>? futureStoreHeartRate;
+
+  // define controller objects to handle user input datetime from UI text field widgets
   final TextEditingController _controller_collectTime = TextEditingController();
 
   // All initial state and operations should be here
@@ -33,7 +36,7 @@ class _SaveDataPageState extends State<SaveData> {
   void _updateText() {
 
     // Call async function to retrive data from aws API gateway
-    futureHeartRate = saveHeartRate(_controller_collectTime.text);
+    futureStoreHeartRate = saveHeartRate(_controller_collectTime.text);
 
     // refresh page to show search results.
     setState(() {
@@ -45,7 +48,7 @@ class _SaveDataPageState extends State<SaveData> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(
-      //   title: const Text('Search Heart Rate'),
+      //   title: const Text('Store Heart Rate'),
       // ),
       body: SingleChildScrollView(
         child: Column(
@@ -53,7 +56,7 @@ class _SaveDataPageState extends State<SaveData> {
             Padding( 
               padding: const EdgeInsets.only(top: 110.0), 
             ),
-            // Input start date time
+            // Text Field: Input collect date time
             Padding( 
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0), 
               padding: EdgeInsets.symmetric(horizontal: 15), 
@@ -65,14 +68,14 @@ class _SaveDataPageState extends State<SaveData> {
                     hintText: 'Enter datatime: yyyy-mm-dd'), 
               ), 
             ),          
-            // Data search button
+            // Button: Data search button
             SizedBox( 
               height: 65, 
               width: 360, 
                 child: Padding( 
                   padding: const EdgeInsets.only(top: 20.0), 
                   child: ElevatedButton( 
-                    child: Text( 'Save Heart Rate', style: TextStyle(color: const Color.fromARGB(255, 3, 59, 105), fontSize: 20), 
+                    child: Text( 'Store Heart Rate', style: TextStyle(color: const Color.fromARGB(255, 3, 59, 105), fontSize: 20), 
                     ), 
                     // handle function after pressing button
                     onPressed: (){ 
@@ -83,6 +86,7 @@ class _SaveDataPageState extends State<SaveData> {
                   ), 
                 ), 
             ),
+            // Container: show save operation results on screen
             Container(
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(20),
@@ -95,21 +99,24 @@ class _SaveDataPageState extends State<SaveData> {
     );
   }
 
-  // this function will build widget to show fetched data on screen
+  // This function will build widget to show save data operation results on screen
+  // FutureBuilder widget is used to perform asynchronous operations and rebuild the UI when the operation is complete
   FutureBuilder<String> buildFutureBuilder() {
     return FutureBuilder<String>(
-      future: futureHeartRate,
+      // listening Future object update
+      future: futureStoreHeartRate,
+      // build UI given value of snapshot object
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          // Display the fetched data when data is available
+          // Display the store data results when data is available
           return Center(child: Text(snapshot.data!));
         } else if (snapshot.hasError) {
           // Display an error message if there's an error
           return Text('${snapshot.error}');
         } else {
-          if(futureHeartRate==null){
+          if(futureStoreHeartRate==null){
             // Display a default message as initial state
-            return Text('No Data.');
+            return Text('No Results.');
           }
           else{
             // Display a loading indicator while waiting for data

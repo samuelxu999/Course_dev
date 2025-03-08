@@ -15,7 +15,7 @@ Future<String> getHeartRate(String startdate, String enddate) async {
     })
   );
   if(response.statusCode == 200) {
-    // parse response data and return fetch data 
+    // parse response data from backend side and return fetch data for UI
     Map<String,dynamic> mapbody = jsonDecode(response.body);
     return mapbody['body'];  
   }
@@ -25,7 +25,7 @@ Future<String> getHeartRate(String startdate, String enddate) async {
 }
 
 Future<String> saveHeartRate(String collect_date) async {
-  // build url for AWS API gateway endpoint: getHeartRate
+  // build url for AWS API gateway endpoint: saveHeartRate
   final url=Uri.parse('https://9xgokmzozd.execute-api.us-east-2.amazonaws.com/test/saveHeartRate');
   final response = await http.post(url,
     headers: <String, String>{
@@ -36,7 +36,7 @@ Future<String> saveHeartRate(String collect_date) async {
     })
   );
   if(response.statusCode == 200) {
-    // parse response data and return fetch data 
+    // parse response results from backend side. 
     Map<String,dynamic> mapbody = jsonDecode(response.body);
     return mapbody['body'];  
   }

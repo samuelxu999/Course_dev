@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'api_functions.dart';
 
-// This is a demo page to show how to use http call API gateway to access data.
+// This is a demo page to show how to use http call API gateway to fetch Fitbit data and display on UI.
 class QueryData extends StatefulWidget {
   const QueryData({super.key});
 
@@ -11,7 +11,10 @@ class QueryData extends StatefulWidget {
 
 // This function update page given state change
 class _QueryDataPageState extends State<QueryData> {
+  // define a Future object to handle results from a asyn function
   Future<String>? futureHeartRate;
+
+  // define controller objects to handle user input datetime from UI text field widgets
   final TextEditingController _controller_startTime = TextEditingController();
   final TextEditingController _controller_endTime = TextEditingController();
 
@@ -56,7 +59,7 @@ class _QueryDataPageState extends State<QueryData> {
             Padding( 
               padding: const EdgeInsets.only(top: 110.0), 
             ),
-            // Input start date time
+            // Text Field: Input start date time
             Padding( 
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0), 
               padding: EdgeInsets.symmetric(horizontal: 15), 
@@ -68,7 +71,7 @@ class _QueryDataPageState extends State<QueryData> {
                     hintText: 'Enter datatime: yyyy-mm-dd'), 
               ), 
             ),
-            // Input end date time
+            // Text Field: Input end date time
             Padding( 
               padding: const EdgeInsets.only( 
                   left: 15.0, right: 15.0, top: 15, bottom: 0), 
@@ -82,7 +85,7 @@ class _QueryDataPageState extends State<QueryData> {
               ), 
             ), 
           
-            // Data search button
+            // Button: Data search button
             SizedBox( 
               height: 65, 
               width: 360, 
@@ -100,6 +103,7 @@ class _QueryDataPageState extends State<QueryData> {
                   ), 
                 ), 
             ),
+            // Container: show data on screen given search results
             Container(
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(20),
@@ -112,10 +116,13 @@ class _QueryDataPageState extends State<QueryData> {
     );
   }
 
-  // this function will build widget to show fetched data on screen
+  // This function will build widget to show fetched data on screen
+  // FutureBuilder widget is used to perform asynchronous operations and rebuild the UI when the operation is complete
   FutureBuilder<String> buildFutureBuilder() {
     return FutureBuilder<String>(
+      // listening Future object update
       future: futureHeartRate,
+      // build UI given value of snapshot object
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           // Display the fetched data when data is available

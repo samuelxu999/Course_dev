@@ -16,10 +16,6 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // ------------ replace with your test page ------------
-      // home: const DemoStatefulWidgets(),
-      // home: const DemoStatelessWidgets(),
-      // home: const DemoLayoutWidgets(),
-      // home: DemoInputWidgets(),
       home: LoginPage(),
     );
   }
