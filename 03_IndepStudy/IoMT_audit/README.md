@@ -82,3 +82,24 @@ python3 NFT_CapAC.py --test_op 5 --id token1 --value "Assign access right!" // a
 python3 NFT_CapAC.py --test_op 6 --id token1 --value "0x5aa101f0ec62a04329d2db2e8763c55cc10ba3d7a6a08f4557aa15159ce3a7c9" // add patient id to token1
 python3 NFT_CapAC.py --test_op 7 --id token1 --value "QmSK2tz19L38cQFZkAbSwtJ8cRXKjE8CPy73tPpFLz9DGc" // add data reference to token1
 ````
+
+5) To run latency test case in /src, you can execute the following commands.
+```shell
+cd src
+// execute demo test cases (py), e.g,. test_demo.py
+python3 test_demo.py -h  							// get usages
+
+python3 test_demo.py --test_op 0					// display all accounts
+
+python3 test_demo.py --test_func 1 --tx_round 5		// query token (id start from 1) 
+
+python3 test_demo.py --test_func 2 --value host_account --tx_round 5	// mint token by owner
+
+python3 test_demo.py --test_func 4 --tx_round 5 	// add patient id (random hash string) to token
+
+python3 test_demo.py --test_func 5 --value 100 --tx_round 5 	// add data reference (a list of random data) to token 
+
+python3 test_demo.py --test_func 6 --tx_round 5 	// assign access rights to token
+
+python3 test_demo.py --test_func 3 --tx_round 5		// burn token (id start from 1)
+````
