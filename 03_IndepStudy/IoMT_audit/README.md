@@ -1,12 +1,16 @@
-# This project uses NFT to provide identity authentication, data integrity, auditability, and tracability.
+# This project uses NFT to provide identity authentication, data integrity, auditability, and tracability atop Ethereum.
 
-Demonstrates a simple case:
+The sample code demonstrates following case study:
 
 1. Show how to implement a NFT smart contract that follows ERC-721
 
 2. How to use Hardhat to perform unit test and scripting tasks on a Hardhat test network
 
-3. How to use truffle to compile and deploy NFT contracts on a ganache test network, then develop phtyon wrapper to interact with functions of NFT tokens. 
+3. How to use truffle to compile and deploy NFT contracts on a ganache test network
+
+4. How to develop python wrapper class to interact with functions of NFT tokens. 
+
+5. How to use python to showcase core functions and evaluate performance, such as latency and gas consumption. 
 
 ## Install required tools: ganache-cli and truffle
 ```shell
@@ -89,17 +93,17 @@ cd src
 // execute demo test cases (py), e.g,. test_demo.py
 python3 test_demo.py -h  							// get usages
 
-python3 test_demo.py --test_op 0					// display all accounts
+python3 test_demo.py --test_func 0					// display all accounts and tokens
 
-python3 test_demo.py --test_func 1 --tx_round 5		// query token (id start from 1) 
+python3 test_demo.py --test_func 1 --tx_round 5		// query token data (id start from 1) 
 
-python3 test_demo.py --test_func 2 --value host_account --tx_round 5	// mint token by owner
+python3 test_demo.py --test_func 2 --value host_account --tx_round 5	// mint token by its owner
 
-python3 test_demo.py --test_func 4 --tx_round 5 	// add patient id (random hash string) to token
+python3 test_demo.py --test_func 4 --tx_round 5 	// add patient id (random hash string) into token data
 
-python3 test_demo.py --test_func 5 --value 100 --tx_round 5 	// add data reference (a list of random data) to token 
+python3 test_demo.py --test_func 5 --value 100 --tx_round 5 	// add data reference (a list of random data) into token data
 
-python3 test_demo.py --test_func 6 --tx_round 5 	// assign access rights to token
+python3 test_demo.py --test_func 6 --tx_round 5 	// Add access rights (json format) into token data
 
 python3 test_demo.py --test_func 3 --tx_round 5		// burn token (id start from 1)
 ````
