@@ -49,7 +49,7 @@ a) First of all, you need launch a local hardhat test network and let it run bac
 
 ```shell
 screen -S hardhat_node  // open a screen session called hardhat_node and attach it
-npx hardhat node        // launch a local hardhat for test
+npx hardhat node --hostname 127.0.0.1 --port 8546	// launch a localhost hardhat testnetwork
 ctrl+A+D 				// detach screen and leave node runing in background
 screen -r hardhat_node  // attach hardhat_node screen session
 ```
