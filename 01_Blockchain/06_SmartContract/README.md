@@ -126,3 +126,13 @@ cd src
 // execute demo test cases (py)
 python3 Box_demo.py
 ````
+
+## D) You can launch webservice GUI to query and store token.
+
+To run Flask server app.
+```shell
+cd src
+python3 app_server.py
+````
+
+Then you can use browser and open web demo page via url: http://127.0.0.1:8080
