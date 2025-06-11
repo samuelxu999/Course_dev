@@ -1,0 +1,25 @@
+<!-- extended from base template -->
+{% extends 'base.html' %}
+
+{% block content %}
+   <h1>{% block title %} Welcome to Smart Contract Dashboard {% endblock %}</h1>
+   <div>
+      <h3>Total accounts: {{posts[1]}}</h3>
+      <table>
+         <thead>
+            <tr>
+               <td>Account Address</td>
+               <td>Account Balance</td>
+            </tr>
+         </thead>
+         <tbody>
+         {% for post in posts[0] %}
+            <tr>
+               <td>{{ post['account'] }}</td>
+               <td>{{ post['balance'] }}</td>
+            </tr>
+         {% endfor %}
+         </tbody>
+      </table>
+   </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!-- extended from base template -->
+{% extends 'base.html' %}
+
+{% block content %}
+   <h1>{% block title %} Store Token {% endblock %}</h1>
+   <form method="post">
+      <div>
+         <label for="store-token">Store Token by ID:</label>
+         <input type="text" id="store-token" name="token_id" value ="{{ request.form['token_id'] }}">
+         <input type="number" id="store-token" name="token_value" value ="{{ request.form['token_value'] }}">
+         <button type='submit'>Store</button>
+      </div>
+   </form>
+   <div>
+      {% if  posts[0]=='NULL' %}
+         <h3>Token ID or value cannot be empty</h3>
+      {% elif posts[0]=='Fail' %}
+         <h3>Token ID {{ posts[0] }} is not available, message: {{ posts[1] }}</h3>
+      {% else %}
+         <h3>Store Token Results</h3>
+         <table>
+            <tbody>
+               <tr>
+                  <th>Token ID</th><td>{{ posts[0] }}</td>
+               </tr>
+               <tr>
+                  <th>Store Token Value</th><td>{{ posts[1] }}</td>
+               </tr>
+            </tbody>
+         </table>
+
+         {% if  posts[2]!={} %}
+            <h3>Store Token Value Receipt</h3>
+            <table width=600>
+               <tr>
+                  <th>Transaction Hash</th><td>{{ posts[2]['transactionHash'] }}</td>
+               </tr>
+               <tr>
+                  <th>Block Number</th><td>{{ posts[2]['blockNumber'] }}</td>
+               </tr>
+               <tr>
+                  <th>Block Hash</th><td>{{ posts[2]['blockHash'] }}</td>
+               </tr>
+            </table>
+         {% endif %}
+      {% endif %}
+   </div>
+{% endblock %}

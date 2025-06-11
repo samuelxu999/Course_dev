@@ -1,0 +1,32 @@
+<!-- extended from base template -->
+{% extends 'base.html' %}
+
+{% block content %}
+   <h1>{% block title %} Query Token {% endblock %}</h1>
+   <form method="post">
+      <div>
+         <label for="query-token">Query Token by ID:</label>
+         <input type="text" id="query-token" name="token_id" value ="{{ request.form['token_id'] }}">
+         <button type='submit'>Query</button>
+      </div>
+   </form>
+   <div>
+      {% if  posts[0]=='NULL' %}
+         <h3>Token ID cannot be empty</h3>
+      {% elif posts[0]=='Fail' %}
+         <h3>Token ID {{ posts[0] }} is not available, message: {{ posts[1] }}</h3>
+      {% else %}
+         <h3>Token Information</h3>
+         <table>
+            <tbody>
+               <tr>
+                  <th>Token ID</th><td>{{ posts[0] }}</td>
+               </tr>
+               <tr>
+                  <th>Token Value</th><td>{{ posts[1] }}</td>
+               </tr>
+            </tbody>
+         </table>
+      {% endif %}
+   </div>
+{% endblock %}
