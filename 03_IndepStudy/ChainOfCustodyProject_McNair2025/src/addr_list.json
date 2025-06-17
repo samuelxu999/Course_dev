@@ -1,0 +1,6 @@
+{
+    "HttpProvider": "http://127.0.0.1:8545",
+    "EvidenceChainOfCustody": "0xd58Dc5b5629ec88FFDa9CB770d58D9ED88527d4D",
+    "DemoUser": "0x849cdC868e2BC798cbe9DcDDac0E54C5e292A4a1",
+    "AnotherUser": "0x13501D03bf763e8a91650ed055A950aBBa969495"
+}
